@@ -1,0 +1,58 @@
+_BASE_: "../Base_PoseTrack17.yaml"
+EXPERIMENT_NAME: "OTPose_"
+WORKERS: 4
+GPUS: (0,1,2,)
+
+OUTPUT_DIR: './output/PE/OTPose/'
+CUDNN:
+  BENCHMARK: true
+  DETERMINISTIC: true
+  ENABLED: true
+CORE_FUNCTION: CommonFunction
+
+MODEL:
+  NAME: OTPose
+
+  USE_PRF: true
+  PRF_BASICBLOCK_NUM: 2
+  PRF_INNER_CH: 34
+
+  USE_PTM: true
+  PTM_BASICBLOCK_NUM: 1
+  PTM_INNER_CH: 17
+
+  USE_PCN: true
+  PRF_PTM_COMBINE_BASICBLOCK_NUM: 2
+  PRF_PTM_COMBINE_INNER_CH: 64
+
+  DEFORMABLE_CONV_CH: 32
+  DEFORMABLE_CONV:
+    DILATION:
+      - 3
+      - 6
+      - 9
+      - 12
+      - 15
+    AGGREGATION_TYPE: weighted_sum
+  OFFSET_MASK_COMBINE_CONV: 2
+
+LOSS:
+  USE_TARGET_WEIGHT: true
+
+TRAIN:
+  AUTO_RESUME: true
+  SAVE_MODEL_PER_EPOCH: 1
+  BATCH_SIZE_PER_GPU: 2 # 19 4
+VAL:
+  BATCH_SIZE_PER_GPU: 4 #38 #
+#  MODEL_FILE: './best_mAP_85.97793354132055_state.pth' # global conv 없는 "HAViT_cos_fix_nf "의 max
+#  MODEL_FILE: "./best_mAP_84.12334920026898_state.pth"
+  MODEL_FILE: ""
+TEST:
+  BATCH_SIZE_PER_GPU: 70 #126 #
+#  MODEL_FILE: './best_mAP_85.97793354132055_state.pth'
+  MODEL_FILE: "./best_mAP_85.73704485692055_state.pth"
+
+DEBUG:
+  VIS_SKELETON: false
+  VIS_BBOX: false

@@ -1,0 +1,60 @@
+_BASE_: "../Base_PoseTrack18.yaml"
+EXPERIMENT_NAME:  "OTPose"
+WORKERS: 8
+GPUS: (0,2,)
+OUTPUT_DIR: "./output/PE/OTPose/"
+
+CORE_FUNCTION: CommonFunction
+
+MODEL:
+  NAME: SemiCTT
+
+  BACKBONE:
+    NAME: "build_retinanet_resnet_fpn_backbone"
+  RESNETS:
+    OUT_FEATURES: [ "res3", "res4", "res5" ]
+  FPN:
+    IN_FEATURES: [ "res3", "res4", "res5" ]
+  MASK_ON: True
+  ROI_MASK_HEAD:
+    NAME: "MaskRCNNConvUpsampleHead"
+    NUM_CONV: 4
+    POOLER_RESOLUTION: 14
+  ROI_HEADS:
+    IOU_THRESHOLDS: [ 0.5 ]
+    IOU_LABELS: [ 0, 1 ]
+
+  DEFORMABLE_CONV_CH: 32
+  DEFORMABLE_CONV:
+    DILATION:
+      - 3
+      - 6
+      - 9
+      - 12
+      - 15
+    AGGREGATION_TYPE: weighted_sum
+
+  OFFSET_MASK_COMBINE_CONV: 2
+  WEIGHTS: '/home/kyungminjin/PycharmProjects/KMPose/pretrained_models/model_final_beta.pth'
+
+LOSS:
+  USE_TARGET_WEIGHT: true
+
+TRAIN:
+  AUTO_RESUME: true
+  SAVE_MODEL_PER_EPOCH: 1
+  BATCH_SIZE_PER_GPU: 8
+
+VAL:
+  BATCH_SIZE_PER_GPU: 120 #40 #
+#  MODEL_FILE: "./best_mAP_83.91406382334866_state.pth" # global conv 없는 "HAViT_cos_fix_nf "의 max
+#  MODEL_FILE: "./best_mAP_84.23635961217448_state.pth" # full "full_normIntersection_nf"의 max
+  MODEL_FILE: ""
+TEST:
+  BATCH_SIZE_PER_GPU: 30 # 124
+#  MODEL_FILE: "./best_mAP_84.23635961217448_state.pth" # full "full_normIntersection_nf"의 max
+  MODEL_FILE: "./best_mAP_84.19501992669946_state.pth" # woGCM_c17_bs32_pseudo01_lnT_peabs_nf_AdamWcos1e5_384282d080head2_125_drop01_sigma3
+
+DEBUG:
+  VIS_SKELETON: false
+  VIS_BBOX: false

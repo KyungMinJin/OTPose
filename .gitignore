@@ -1,0 +1,10 @@
+output
+*.pyc
+thirdparty/utils/build
+thirdparty/deform_conv/build
+.idea
+*.pth
+tensorboard
+*.egg-info
+*.egg
+*.so
