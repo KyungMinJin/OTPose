@@ -163,3 +163,7 @@ We will prepare all visualization codes in this repo but we need to test it. We 
 [//]: # (python video.py)
 
 [//]: # (```)
+
+
+## Acknowledgements
+- The code is built upon [DCPose](https://github.com/Pose-Group/DCPose).
