@@ -30,7 +30,6 @@ class Train(Base):
         os.environ["CUDA_VISIBLE_DEVICES"] = ",".join((map(str, cfg.GPUS)))
         self.gpus = cfg.GPUS
         self.PE_Name = args.PE_Name
-        # trainer
 
         self.checkpoints_save_folder = self.output_path_dict["checkpoints_save_folder"]
         self.tb_save_folder = self.output_path_dict["tb_save_folder"]
@@ -48,9 +47,7 @@ class Train(Base):
             worker_init_fn=(worker_init_reset_seed),
             shuffle=cfg.TRAIN.SHUFFLE,
             drop_last=True,
-            # generator=fix_random_seed(cfg.SEED, include_cuda=True),
             pin_memory=cfg.PIN_MEMORY,
-            # persistent_workers=True
         )
 
         self.dataloader = train_loader
