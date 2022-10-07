@@ -2,7 +2,7 @@
 
 ## Description
 
-This is an official repo for OTPose: Occlusion-Aware Transformer for Pose Estimation in Sparsely-Labeled Videos. [Paper](https://arxiv.org/abs/2207.09725).
+This is an official repo for OTPose: Occlusion-Aware Transformer for Pose Estimation in Sparsely-Labeled Videos. [\[Paper\]](https://arxiv.org/abs/2207.09725)
 
 ### Framework
 
