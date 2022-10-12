@@ -1,19 +1,10 @@
 # OTPose: Occlusion-Aware Transformer for Pose Estimation in Sparsely-Labeled Videos (SMC 2022 Oral)
 
-## Description
-
 This is an official repo for OTPose: Occlusion-Aware Transformer for Pose Estimation in Sparsely-Labeled Videos. [\[Paper\]](https://arxiv.org/abs/2207.09725)
 
-### Framework
+## Description
 
-We propose OTPose
-(Occlusion-aware Transformer for Pose estimation) that explicitly encodes occlusion using a mask as a semi-supervised
-task and intuitively understands temporal dependency using a transformer encoder.
-We effectively accumulate
-occlusion-specific features and introduce an attention mask
-that focuses on the overlapped area of easily occluded
-keypoints. In addition, two temporal-domain branches independently encode unique pose features that focus on past
-and future frames, respectively.
+We propose OTPose (Occlusion-aware Transformer for Pose estimation) that explicitly encodes occlusion using a mask as a semi-supervised task and intuitively understands temporal dependency using a transformer encoder. We effectively accumulate occlusion-specific features and introduce an attention mask that focuses on the overlapped area of easily occluded keypoints. In addition, two temporal-domain branches independently encode unique pose features that focus on past and future frames, respectively.
 
 ![](docs/main.png)
 
