@@ -160,6 +160,19 @@ We will prepare all visualization codes in this repo but we need to test it. We 
 [//]: # "python video.py"
 [//]: # "```"
 
+## Citation
+
+```
+@inproceedings{jin2022otpose,
+  title={OTPose: Occlusion-Aware Transformer for Pose Estimation in Sparsely-Labeled Videos},
+  author={Jin, Kyung-Min and Lee, Gun-Hee and Lee, Seong-Whan},
+  booktitle={2022 IEEE International Conference on Systems, Man, and Cybernetics (SMC)},
+  pages={3255--3260},
+  year={2022},
+  organization={IEEE}
+}
+```
+
 ## Acknowledgements
 
 - The code is built upon [DCPose](https://github.com/Pose-Group/DCPose).
